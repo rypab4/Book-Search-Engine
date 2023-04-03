@@ -34,11 +34,17 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, { bookData }, context) => {
+    saveBook: async (parent, {
+      authors, 
+      description,
+      bookId,
+      image,
+      link,
+      title}, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedBooks: bookData } },
+          { $push: { savedBooks: {authors, description, bookId, image, link, title}} } ,
           { new: true }
         );
 
