@@ -1,3 +1,5 @@
+//schema for GraphQL API using gql
+// Define User, Book, Auth and two operations, Query and Mutations
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
@@ -26,7 +28,7 @@ type Query {
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    loginUser(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     saveBook(authors: [String], description: String,
         bookId: ID,
         image: String,
